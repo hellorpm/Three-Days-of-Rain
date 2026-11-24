@@ -70,7 +70,6 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: -2em;
   padding-bottom: 0;
   font-family: 'avenir next' !important;
 }
@@ -216,8 +215,8 @@
   font-family: 'avenir next' !important;
 
 
-  border-right-color: var(--cal-ink);
-  border-bottom-color: var(--cal-ink);
+  border-right-color:#233658;
+  border-bottom-color: #233658;
   color:  var(--cal-ink);
 
   font-size: clamp(1rem, 0.5vw + 0.85rem, 1.25rem);
@@ -268,6 +267,7 @@
   letter-spacing: 0.04em;
   opacity: 0.85;
   text-align: left;
+  color: #233658;
 }
 
 /* A day outside the month, used only to pad the grid. It keeps its border so
