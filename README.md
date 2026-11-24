@@ -34,11 +34,6 @@ the updated `dist/` files along with your source changes.
 - Each build stamps a timestamp in the banner of the dist files, so `dist/` will
   show as changed after every build even if the sources didn't change.
 
-### Not in the bundle
-
-`tdr-videos.js` and `tdr-videos.css` are deliberately excluded (see `EXCLUDED` in
-`build.js`). They are loaded separately, only on the page that needs them.
-
 ## Modules
 
 | Module | Files | Mount point on the page | Sheet tab |
