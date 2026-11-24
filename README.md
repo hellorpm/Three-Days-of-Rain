@@ -71,32 +71,6 @@ the ticketing site. Each date in the run is one sheet row:
 `tdr-calendar.js` also defines the small shared helper object (`window.TDR`) that
 it needs. No other module uses it.
 
-## Setup checklist for TDR (carried over from HTBB, not yet changed)
-
-These values were copied from the HTBB site and **must be replaced** for TDR:
-
-- [ ] **Google Sheet ID and API key.** Hard-coded in `tdr-quotes.js`, `tdr-faqs.js`,
-      `tdr-cast-creative.js`, `tdr-creative.js`, `tdr-videos.js` and
-      `tdr-calendar.js` (look for `sheetId` / `spreadsheetId` and `apiKey`).
-      Right now TDR would read HTBB's sheet.
-- [ ] **API key hygiene.** The key is visible to anyone who views the page source.
-      Create a TDR key, restrict it to the Google Sheets API and to the TDR site's
-      referrers, and keep nothing private in the workbook. The workbook must be
-      shared "Anyone with the link: Viewer".
-- [ ] **Sheet tabs and columns** must match the table above (tab names are
-      case-sensitive).
-- [ ] **Calendar config** (two "EDIT ME" blocks at the top of `tdr-calendar.js`):
-      ticketing `baseUrl`, `aid`, `utm_*` values, `startYear` / `startMonth`,
-      legend text, and the header comment that still names HTBB. Set
-      `SHEET.debug` to `false` before launch.
-- [ ] **`tdr-lens.js` and the "Widen the Lens" legend text** are HTBB-specific.
-      Keep or remove them depending on whether TDR has a similar series.
-- [ ] **Videos/books page** (`tdr-videos.js`): column G switches between video and
-      book layouts, and column I is a quote field labelled for an HTBB person.
-      Review before reusing.
-- [ ] **Page markup on Squarespace** (code blocks, header/footer injection) must use
-      `tdr-` class names and IDs. Anything copied from the HTBB site still says `htbb-`.
-
 ## Deploying to Squarespace
 
 <!-- Fill in how dist/tdr.css and dist/tdr.js are served on the TDR site (header
@@ -104,7 +78,7 @@ These values were copied from the HTBB site and **must be replaced** for TDR:
      doesn't have to guess. -->
 
 The calendar's setup notes call for the CSS in the page `<head>` and the JS loaded
-with `defer`. `build.js` lists the files in the same order the HTBB Squarespace
+with `defer`. `build.js` lists the files in the same order the Squarespace
 header injection used.
 After rebuilding, re-publish the updated `dist/` files wherever they're served, and
 hard-refresh to bypass caching.

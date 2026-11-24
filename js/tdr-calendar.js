@@ -194,8 +194,8 @@
     },
 
     // Fallback month, used only when the sheet has no performances at all.
-    startYear: 2026,
-    startMonth: 9, // 0-based: October
+    startYear: 2020,
+    startMonth: 0, // 0-based: 0 is January
 
     // Show the legend whenever ANY month in the sheet has a Best Available
     // ticked. Set true to narrow it to only the month currently on screen.
