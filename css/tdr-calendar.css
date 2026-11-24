@@ -18,9 +18,9 @@
   /* One indirection so every rule below reads from a local name. The host
      variable wins whenever it is set; the literal is a safety net, not a
      design decision. */
-  --cal-ink: var(--tdr-text, #333f48);
-  --cal-paper: var(--tdr-background, #ebe9e1);
-  --cal-accent: var(--tdr-accent, #333f48);
+  --cal-ink: var(--tdr-text, #ffffff);
+  --cal-paper: var(--tdr-background, #0000ff);
+  --cal-accent: var(--tdr-accent, #ff00ff);
 
   /* Two weights of line, and the difference between them is the hierarchy:
      the grid recedes to structure, the showtime buttons come forward as the
@@ -76,7 +76,7 @@
 }
 
 .tdr-calendar__month {
-  color: #333f48 !important;
+  color: var(--cal-ink, #ffffff) !important;
   margin: 0;
   min-width: 12ch;
   letter-spacing: 0.02em;

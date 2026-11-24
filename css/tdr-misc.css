@@ -33,6 +33,12 @@
   box-shadow: 5px 5px 10px #000;
 }
 
+.calendar-box h2 {
+	text-align: center;
+	margin-top: 0;
+	font-size: 40px;
+}
+
 .tickets_below_calendar {
   text-align: center;
   font-size: 12px;

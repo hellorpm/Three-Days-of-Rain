@@ -505,7 +505,7 @@
 
           <h2 class="tdr-calendar__month" aria-live="polite">
             ${MONTH_NAMES[month]}
-            <p>${TDR.esc(CONFIG.legendText)}</p>
+            <p class="display: none">${TDR.esc(CONFIG.legendText)}</p>
           </h2>
 
           <button
