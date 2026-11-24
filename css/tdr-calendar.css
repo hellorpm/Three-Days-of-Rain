@@ -76,12 +76,15 @@
 }
 
 .tdr-calendar__month {
-  color: var(--cal-ink, #ffffff) !important;
+  color: #7a86a0 !important;
   margin: 0;
   min-width: 12ch;
   letter-spacing: 0.02em;
   text-align: center;
   font-family: 'avenir next' !important;
+  text-transform: uppercase;
+  font-size: 39px;
+  font-weight: 700;
 }
 
 .tdr-calendar__prev,
@@ -93,11 +96,10 @@
   width: 44px;
   height: 44px;
   padding: 0;
-
   background: none;
   border: 0;
   border-radius: 50%;
-  color: #333f48;
+  color: #ffffff;
   cursor: pointer;
 
   transition: background-color var(--cal-speed) ease;
@@ -197,14 +199,14 @@
   /* One continuous rule everywhere: the grid draws the top and left edges,
      each cell draws its right and bottom. Borders on all four sides of every
      cell would double up to 2px on every shared line. */
-  border-top: 1px solid var(--cal-ink);
-  border-left: 1px solid var(--cal-ink);
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
 }
 
 .tdr-calendar__weekday,
 .tdr-calendar__day {
-  border-right: 2px solid #232b31;
-  border-bottom: 2px solid #232b31;  
+  border-right: 2px solid #233658;
+  border-bottom: 2px solid #233658;  
 }
 
 /* The band is one solid bar of ink. Its cell borders are the same ink, so the
@@ -252,6 +254,7 @@
   /* Square-ish cells keep all six rows the same height whatever the month. */
   min-height: 6.5rem;
   padding: 0.45rem 0.45rem 0.5rem;
+  background-color: #ffffff;
 }
 
 /* The numeral labels the cell; the showtimes are the thing to click. Holding
