@@ -1,0 +1,256 @@
+/* ==========================================================
+   TDR — SLIDE-OUT MENU
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   HAMBURGER
+   ---------------------------------------------------------- */
+
+.tdr-menu-toggle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 80px;
+    height: 60px;
+    padding: 5px;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.tdr-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 6px;
+    margin: 0;
+    background: #333f48;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* ----------------------------------------------------------
+   OVERLAY
+   ---------------------------------------------------------- */
+
+.tdr-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.tdr-menu-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* ----------------------------------------------------------
+   MENU PANEL
+   ---------------------------------------------------------- */
+
+.tdr-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+    width: 420px;
+    max-width: 90vw;
+    height: 100vh;
+    height: 100dvh;
+
+    background: #fff;
+
+    transform: translateX(-100%);
+
+    visibility: hidden;
+
+    transition:
+        transform 0.45s ease,
+        visibility 0.45s ease;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.tdr-menu.is-open {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+
+/* ----------------------------------------------------------
+   CLOSE BUTTON
+   ---------------------------------------------------------- */
+
+.tdr-menu-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+
+    cursor: pointer;
+}
+
+.tdr-menu-close span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    width: 32px;
+    height: 2px;
+
+    background: #fff;
+}
+
+.tdr-menu-close span:first-child {
+    transform:
+        translate(-50%, -50%)
+        rotate(45deg);
+}
+
+.tdr-menu-close span:last-child {
+    transform:
+        translate(-50%, -50%)
+        rotate(-45deg);
+}
+
+
+/* ----------------------------------------------------------
+   MENU CONTENT
+   ---------------------------------------------------------- */
+
+.tdr-menu-inner {
+    display: flex;
+    
+    background: #333f48;
+    min-height: 100%;
+
+    padding: 100px 50px 60px;
+}
+
+
+/* ----------------------------------------------------------
+   MENU LIST
+   ---------------------------------------------------------- */
+
+.tdr-menu-list {
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.tdr-menu-item {
+    margin: 0;
+    padding: 0;
+}
+
+.tdr-menu-link {
+    position: relative;
+
+    display: inline-block;
+    font-family: 'avenir next' !important;
+    padding: 8px 0;
+
+    color: #fff;
+
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.1;
+    text-decoration: none;
+
+    transition: opacity 0.25s ease;
+}
+
+.tdr-menu-link:hover {
+    opacity: 0.55;
+}
+
+
+/* ----------------------------------------------------------
+   BODY LOCK
+   ---------------------------------------------------------- */
+
+body.tdr-menu-open {
+    overflow: hidden;
+}
+
+
+/* ----------------------------------------------------------
+   MOBILE
+   ---------------------------------------------------------- */
+@media (max-width: 1140px) {
+    .tdr-menu-toggle {
+        width: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .tdr-menu {
+        width: 85vw;
+        max-width: 360px;
+    }
+
+    .tdr-menu-inner {
+        padding:
+            90px
+            30px
+            50px;
+    }
+
+    .tdr-menu-link {
+        font-size: 28px;
+    }
+
+    .tdr-menu-close {
+        top: 20px;
+        right: 20px;
+    }
+}
+
+
+/* ----------------------------------------------------------
+   REDUCED MOTION
+   ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .tdr-menu,
+    .tdr-menu-overlay,
+    .tdr-menu-toggle span {
+        transition: none;
+    }
+}

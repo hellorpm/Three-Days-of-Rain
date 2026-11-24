@@ -1,0 +1,497 @@
+/* ==========================================================
+   TDR — CAST
+   ========================================================== */
+
+.tdr-cast {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0px 25px 60px;
+}
+
+
+/* ----------------------------------------------------------
+   GRID
+   ---------------------------------------------------------- */
+
+.tdr-cast__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 45px 40px;
+}
+
+
+/* ----------------------------------------------------------
+   CAST CARD
+   ---------------------------------------------------------- */
+
+.tdr-cast__card {
+    min-width: 0;
+    margin: 0;
+}
+
+.tdr-cast__button {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    text-align: inherit;
+    cursor: pointer;
+}
+
+
+/* ----------------------------------------------------------
+   IMAGE
+   ---------------------------------------------------------- */
+
+.tdr-cast__image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #000;
+}
+
+.tdr-cast__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.tdr-cast__button:hover .tdr-cast__image {
+    transform: scale(1.025);
+}
+
+
+/* ----------------------------------------------------------
+   CARD TEXT
+   ---------------------------------------------------------- */
+
+.tdr-cast__info {
+    padding: 10px 8px 12px;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    min-height: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+}
+
+.tdr-cast__name {
+    margin: 0;
+    letter-spacing: 0px;
+    color: #ebe9e1;
+    font-family: "avenir next", sans-serif !important;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.tdr-cast__role {
+    margin: 3px 0 0;
+    color: #ebe9e1;
+    font-family: "avenir next", sans-serif !important;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+
+/* ==========================================================
+   MODAL
+   ========================================================== */
+
+.tdr-cast-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.tdr-cast-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.tdr-cast-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.tdr-cast-modal__dialog {
+    /* position: relative; */
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1100px;
+    max-height: calc(100dvh - 80px);
+
+    overflow-y: auto;
+
+    background: #eae9e1;
+}
+
+
+/* ----------------------------------------------------------
+   MODAL CONTENT
+   ---------------------------------------------------------- */
+
+.tdr-cast-modal__inner {
+    display: grid;
+    grid-template-columns: minmax(250px, 35%) 1fr;
+    gap: 50px;
+
+    padding: 60px;
+}
+
+.tdr-cast-modal__photo {
+    width: 100%;
+}
+
+.tdr-cast-modal__photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.tdr-cast-modal__name {
+    margin: 0;
+    color: #333f48;
+    font-family: "alternate-gothic-condensed-a", sans-serif !important;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.tdr-cast-modal__role {
+    margin: 5px 0 25px;
+    color: #333f48;
+    font-family: "avenir next", sans-serif !important;
+    font-size: 18px;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.tdr-cast-modal__bio,
+.tdr-cast-modal__bio p {
+    color: #333f48;
+    font-family: "century-gothic", sans-serif !important;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.tdr-cast-modal__bio p:first-child {
+    margin-top: 0;
+}
+
+.tdr-cast-modal__bio p:last-child {
+    margin-bottom: 0;
+}
+
+.tdr-cast-modal__name br {
+    display: none;
+}
+
+.tdr-cast-modal__name .tdr-cast__name-break {
+    margin: 0 6px;
+}
+
+/* ==========================================================
+   CAST MODAL — PREVIOUS / NEXT
+   ========================================================== */
+
+.tdr-cast-modal__nav {
+    pointer-events: none;
+}
+
+.tdr-cast-modal__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #FAC946;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    pointer-events: auto;
+}
+
+.tdr-cast-modal__arrow span {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 64px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.tdr-cast-modal__arrow--prev {
+    left: 20px;
+}
+
+.tdr-cast-modal__arrow--next {
+    right: 20px;
+}
+
+.tdr-cast-modal__arrow:hover,
+.tdr-cast-modal__arrow:focus-visible {
+    opacity: 0.7;
+}
+
+.tdr-cast-modal__arrow--prev:hover {
+    transform: translate(-4px, -50%);
+}
+
+.tdr-cast-modal__arrow--next:hover {
+    transform: translate(4px, -50%);
+}
+
+
+/* ==========================================================
+   CAST MODAL ARROWS — MOBILE
+   ========================================================== */
+
+@media (max-width: 760px) {
+
+    .tdr-cast-modal__arrow {
+        width: 40px;
+        height: 50px;
+    }
+
+    .tdr-cast-modal__arrow span {
+        font-size: 48px;
+    }
+
+    .tdr-cast-modal__arrow--prev {
+        left: 5px;
+    }
+
+    .tdr-cast-modal__arrow--next {
+        right: 5px;
+    }
+}
+
+
+/* ----------------------------------------------------------
+   SOCIALS
+   ---------------------------------------------------------- */
+
+.tdr-cast-modal__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+.tdr-cast-modal__socials a {
+    color: #333f48;
+    font-family: "avenir next", sans-serif !important;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+
+/* ----------------------------------------------------------
+   CLOSE
+   ---------------------------------------------------------- */
+
+.tdr-cast-modal__close {
+    position: relative;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: block;
+    width: 40px;
+    height: 40px;
+
+    margin-left: auto;
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.tdr-cast-modal__close span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 30px;
+    height: 2px;
+
+    background: #333f48;
+}
+
+.tdr-cast-modal__close span:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.tdr-cast-modal__close span:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/* ----------------------------------------------------------
+   BODY LOCK
+   ---------------------------------------------------------- */
+
+body.tdr-cast-modal-open {
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+    .tdr-cast__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px 25px;
+    }
+
+    .tdr-cast-modal__inner {
+        gap: 35px;
+        padding: 50px 40px;
+    }
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+    .tdr-cast {
+        padding: 40px 20px;
+    }
+
+    .tdr-cast__grid {
+        gap: 25px 15px;
+    }
+
+    .tdr-cast__name {
+        font-size: 15px;
+    }
+
+    .tdr-cast__role {
+        font-size: 13px;
+    }
+
+    .tdr-cast-modal {
+        padding: 15px;
+    }
+
+    .tdr-cast-modal__dialog {
+        max-height: calc(100dvh - 30px);
+    }
+
+    .tdr-cast-modal__inner {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 55px 25px 35px;
+    }
+
+    .tdr-cast-modal__photo {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .tdr-cast-modal__name {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 500px) {
+    .tdr-cast__name br {
+        display: none;
+    }
+    .tdr-cast__name-break::before {
+        content: " ";
+    }    
+    .tdr-cast__name {
+        font-size: 13px;
+    }
+    .tdr-cast__role {
+        font-size: 11px;
+    }
+    .tdr-cast__info {
+        padding: 10px 4px;
+    }
+    .header-bar h2 {
+        font-size: 30px;
+        padding: 10px;
+    }  
+    .tdr-cast__info {
+        min-height: 85px;
+    }     
+}
+
+@media (max-width: 415px) {
+    .tdr-cast__name {
+        font-size: 10px;
+    }
+    .tdr-cast__role {
+        font-size: 9px;
+    }
+    .tdr-cast__info {
+        padding: 10px 2px;
+    }
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .tdr-cast__image,
+    .tdr-cast-modal {
+        transition: none;
+    }
+}

@@ -1,0 +1,246 @@
+/* ============================================================
+   FAQ
+   ============================================================ */
+
+#tdr-faq {
+	width: 100%;
+	max-width: 1390px;
+	margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Reserve a little space while Google Sheets loads. */
+#tdr-faq.is-loading {
+	min-height: 20rem;
+}
+
+/* ------------------------------------------------------------
+   ITEM
+   ------------------------------------------------------------ */
+
+.tdr-faq__item {
+	
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+}
+
+.tdr-faq__item:first-child {
+
+}
+
+.tdr-faq__heading {
+	margin: 0;
+	font: inherit;
+    font-size: 28px;
+}
+
+/* ------------------------------------------------------------
+   QUESTION
+   ------------------------------------------------------------ */
+
+.tdr-faq__question {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+
+	width: 100%;
+	min-height: 60px;
+	padding: 1.25rem 1.5rem;
+
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+
+	color: #333f48;
+
+	font: inherit;
+	text-align: left;
+
+	cursor: pointer;
+	appearance: none;
+
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+}
+
+.tdr-faq__label {
+	flex: 1;
+    font-family: 'avenir next' !important;
+    font-weight: 700;
+    font-size: 28px;
+	line-height: 1.25;
+}
+
+/* ------------------------------------------------------------
+   PLUS / MINUS
+   ------------------------------------------------------------ */
+
+.tdr-faq__icon {
+	--tdr-faq-icon-weight: 6px;
+
+	position: relative;
+
+	flex: 0 0 22px;
+	width: 22px;
+	height: 22px;
+
+	color: currentColor;
+}
+
+.tdr-faq__icon::before,
+.tdr-faq__icon::after {
+	content: '';
+
+	position: absolute;
+	top: 50%;
+	left: 0;
+
+	width: 100%;
+	height: var(--tdr-faq-icon-weight);
+
+	margin-top:
+		calc(
+			var(--tdr-faq-icon-weight) / -2
+		);
+
+	background: currentColor;
+
+	transition:
+		transform 0.2s ease;
+}
+
+/* Vertical portion of + */
+.tdr-faq__icon::after {
+	transform: rotate(90deg);
+}
+
+/* Open = minus */
+.tdr-faq__question[aria-expanded='true']
+	.tdr-faq__icon::after {
+	transform: rotate(0deg);
+}
+
+/* ------------------------------------------------------------
+   ANSWER
+   ------------------------------------------------------------ */
+
+.tdr-faq__answer[hidden] {
+	display: none;
+}
+
+.tdr-faq__answer-inner {
+	padding:
+		0
+		4.75rem
+		1.5rem
+		1.5rem;
+
+	color: inherit;
+    font-size: 26px;
+    font-weight: 400;
+    font-family: 'avenir next' !important;
+	line-height: 1.5;
+}
+
+.tdr-faq__answer-inner p {
+	margin: 0 0 1em;
+}
+
+.tdr-faq__answer-inner p:last-child {
+	margin-bottom: 0;
+}
+
+.tdr-faq__answer-inner a {
+	color: inherit;
+    text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+/* ------------------------------------------------------------
+   OPEN ITEM
+   ------------------------------------------------------------ */
+
+.tdr-faq__item:has(
+	.tdr-faq__question[aria-expanded='true']
+) {
+	background: #333f48;
+	color: #eae9e1;
+}
+
+.tdr-faq__item:has(
+	.tdr-faq__question[aria-expanded='true']
+)
+.tdr-faq__question {
+	color: #eae9e1 !important;
+}
+
+.tdr-faq__item:has(
+	.tdr-faq__question[aria-expanded='true']
+)
+.tdr-faq__answer-inner {
+	color: #eae9e1;
+}
+
+/* ------------------------------------------------------------
+   FOCUS
+   ------------------------------------------------------------ */
+
+.tdr-faq__question:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: -4px;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 640px) {    
+
+	.tdr-faq__question {
+		gap: 1.25rem;
+		min-height: 54px;
+		padding: 1rem;
+	}
+
+	.tdr-faq__label {
+		font-size: 18px;
+		-webkit-hyphens: none !important;
+		hyphens: none !important;
+		word-break: normal !important;
+		overflow-wrap: normal !important;		
+	}
+
+	.tdr-faq__icon {
+		flex-basis: 18px;
+		width: 18px;
+		height: 18px;
+	}
+
+	.tdr-faq__answer-inner {
+        font-size: 16px;
+		padding:
+			0
+			3.25rem
+			1.25rem
+			1rem;
+	}
+	#tdr-faq {
+		padding: 0;
+	}
+	.tdr-faq__question {
+		padding: 1rem 10px;
+	}
+	.tdr-faq__answer-inner {
+		padding: 0 10px 1rem;
+	}	
+
+}
+
+@media (max-width: 500px) {
+	.tdr-faq__label {
+		font-size: 15px;
+	}
+}

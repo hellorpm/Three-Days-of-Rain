@@ -1,0 +1,38 @@
+/* ============================================================
+   HEADER LINK
+   ============================================================ */
+
+.tdr-header-link {
+  opacity: 0;
+  animation: tdrFadeIn 1.5s ease forwards;
+  margin: 0;
+  padding: 0;
+  position: relative;  
+  display: inline-flex;
+  gap: 10px;  
+}
+
+@keyframes tdrFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.tdr-header-link a {
+  color: #fff;
+  border: 1px solid #000;
+  background: #000;
+    padding: 12px 10px;
+  transition: all 0.5s;
+  font-size: 44px
+}
+
+.tdr-header-link a:hover,
+.tdr-header-link a:focus {
+  color: #000;
+  background: #fff;
+}
