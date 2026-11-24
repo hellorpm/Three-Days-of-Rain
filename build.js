@@ -21,7 +21,7 @@ const CSS = [
 //   'css/tdr-menu.css',
 //   'css/tdr-cast.css',
 //   'css/tdr-creative.css',
-//   'css/tdr-misc.css',
+   'css/tdr-misc.css',
 ];
 
 const JS = [

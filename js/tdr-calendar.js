@@ -180,16 +180,16 @@
    * ================================================================ */
   const CONFIG = {
     // Lowercase "tickets" to match the URL the ticketing team supplied exactly.
-    baseUrl: 'https://www.telecharge.com/Here-There-Are-Blueberries-tickets',
+    baseUrl: 'https://www.telecharge.com/Three-Days-Rain-tickets',
 
 
     // Supplied by the ticketing team. Emitted as both AID and utm_id — if this
     // is ever blanked, both are omitted rather than sent empty.
-    aid: 'BWY001499800',
+    aid: 'BWY001497600',
 
     utm: {
       utm_source: 'show_site',
-      utm_campaign: 'HereThereAreBlueberriesSS',
+      utm_campaign: 'Three-Days-RainSS',
       utm_medium: 'web',
     },
 
