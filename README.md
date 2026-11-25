@@ -96,6 +96,11 @@ trailing `*` also matches everything under that path). On an excluded page no
 header is built and Squarespace's own header stays hidden. There may be a brief
 flash of the reserved header bar on those pages while the deferred script loads.
 
+A single page can instead opt out without path matching: in that page's Page
+Settings > Advanced > Page Header Code Injection, add
+`<script>document.documentElement.classList.add('tdr-no-nav');</script>`.
+That runs before the page paints, so there is no flash.
+
 The header color and height are CSS variables at the top of `tdr-header.css`.
 
 ## Deploying to Squarespace

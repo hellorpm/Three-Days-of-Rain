@@ -36,6 +36,13 @@
      *                 everything under that path. On those pages no header is
      *                 built, and Squarespace's own header stays hidden.
      *
+     * A page can also opt out without any path matching: put this in that
+     * page's own Page Settings > Advanced > Page Header Code Injection:
+     *
+     *   <script>document.documentElement.classList.add('tdr-no-nav');</script>
+     *
+     * (It runs before the page paints, so there is no flash of the bar.)
+     *
      * All text is inserted as text (never HTML).
      */
 
@@ -117,27 +124,29 @@
 
     const currentPath = normalizePath(window.location.pathname);
 
-    const isExcluded = toArray(config.excludePaths).some(entry => {
-        const pattern = String(entry).trim();
+    const isExcluded =
+        document.documentElement.classList.contains('tdr-no-nav') ||
+        toArray(config.excludePaths).some(entry => {
+            const pattern = String(entry).trim();
 
-        if (!pattern) {
-            return false;
-        }
+            if (!pattern) {
+                return false;
+            }
 
-        if (pattern.endsWith('*')) {
-            const base = normalizePath(pattern.slice(0, -1));
-            const prefix = base === '/' ? '/' : `${base}/`;
+            if (pattern.endsWith('*')) {
+                const base = normalizePath(pattern.slice(0, -1));
+                const prefix = base === '/' ? '/' : `${base}/`;
 
-            return currentPath === base || currentPath.startsWith(prefix);
-        }
+                return currentPath === base || currentPath.startsWith(prefix);
+            }
 
-        return currentPath === normalizePath(pattern);
-    });
+            return currentPath === normalizePath(pattern);
+        });
 
     if (isExcluded) {
         // tdr-header.css uses this class to remove the space reserved for the header.
         document.documentElement.classList.add('tdr-no-nav');
-        console.log(`${MODULE} Page excluded; header not built.`);
+        console.log(`${MODULE} Page excluded (path: ${currentPath}); header not built.`);
         return;
     }
 
@@ -254,6 +263,6 @@
     document.body.prepend(header, overlay, menu);
     document.body.classList.add('tdr-has-nav');
 
-    console.log(`${MODULE} Ready.`);
+    console.log(`${MODULE} Ready (path: ${currentPath}).`);
 
 })();
