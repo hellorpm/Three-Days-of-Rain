@@ -47,6 +47,17 @@ body::before {
 }
 
 
+/* Excluded pages (navbar.js adds this class to <html>): no reserved space. */
+
+html.tdr-no-nav body {
+    padding-top: 0;
+}
+
+html.tdr-no-nav body::before {
+    display: none;
+}
+
+
 /* ----------------------------------------------------------
    BAR
    Three columns so the center text is truly centered

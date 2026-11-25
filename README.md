@@ -85,10 +85,16 @@ window.TDR_NAV = {
     links: [
         { label: 'Home',    href: '/' },
         { label: 'Tickets', href: '/tickets' }
-    ]
+    ],
+    excludePaths: ['/landing', '/events/*']      // optional: pages with no header
 };
 </script>
 ```
+
+`excludePaths` entries are page paths (case and trailing slash are ignored; a
+trailing `*` also matches everything under that path). On an excluded page no
+header is built and Squarespace's own header stays hidden. There may be a brief
+flash of the reserved header bar on those pages while the deferred script loads.
 
 The header color and height are CSS variables at the top of `tdr-header.css`.
 

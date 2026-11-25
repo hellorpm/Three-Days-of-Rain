@@ -19,7 +19,8 @@
      *       links: [
      *           { label: 'Home',    href: '/' },
      *           { label: 'Tickets', href: '/tickets' }
-     *       ]
+     *       ],
+     *       excludePaths: ['/some-page']                 // optional
      *   };
      *   </script>
      *
@@ -29,6 +30,11 @@
      * - ticketsLabel: button text. Defaults to "Get Tickets".
      * - links:        slide-out menu items, in order. The link matching the
      *                 current page gets aria-current="page".
+     * - excludePaths: optional list of page paths that should NOT get the
+     *                 header, e.g. ['/landing', '/events/*']. Matching ignores
+     *                 case and trailing slashes; a trailing * also matches
+     *                 everything under that path. On those pages no header is
+     *                 built, and Squarespace's own header stays hidden.
      *
      * All text is inserted as text (never HTML).
      */
@@ -103,6 +109,37 @@
             return false;
         }
     };
+
+
+    // ------------------------------------------------------------
+    // EXCLUDED PAGES
+    // ------------------------------------------------------------
+
+    const currentPath = normalizePath(window.location.pathname);
+
+    const isExcluded = toArray(config.excludePaths).some(entry => {
+        const pattern = String(entry).trim();
+
+        if (!pattern) {
+            return false;
+        }
+
+        if (pattern.endsWith('*')) {
+            const base = normalizePath(pattern.slice(0, -1));
+            const prefix = base === '/' ? '/' : `${base}/`;
+
+            return currentPath === base || currentPath.startsWith(prefix);
+        }
+
+        return currentPath === normalizePath(pattern);
+    });
+
+    if (isExcluded) {
+        // tdr-header.css uses this class to remove the space reserved for the header.
+        document.documentElement.classList.add('tdr-no-nav');
+        console.log(`${MODULE} Page excluded; header not built.`);
+        return;
+    }
 
 
     // ------------------------------------------------------------
