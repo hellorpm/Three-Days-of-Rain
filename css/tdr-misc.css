@@ -43,6 +43,9 @@
 	.calendar-box h2.boxtitle {
 		font-size: 28px;
 	}
+	.calendar-box {
+		padding: 25px 15px;
+	}
 }
 
 .tickets_below_calendar {
