@@ -23,6 +23,13 @@
   margin-top: 0
 }
 
+h3.subheader {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 3rem 0;
+}
+
 .tickets_above_calendar {
   text-align: center;
 }
@@ -58,10 +65,21 @@
   letter-spacing: .3px;
 }
 
-h3.subheader {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 600;
+.tickets_below_calendar {
+  display: flex;
+  max-width: 900px;
+  margin: 10px auto 0 auto;
+  gap: 7px;
+  justify-content: center;
+}
+
+.tickets_below_calendar img {
+  width: 80px;
+  height: 26px;
+}
+
+.tickets_below_calendar span {
+  padding-top: 3px
 }
 
 /******** WTB BOX: ways to buy ********/
