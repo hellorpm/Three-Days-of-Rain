@@ -2,8 +2,11 @@
    MISC STYLES
    ============================================================ */
 
-/* Calendar misc styling */
 
+/* ---------------------------------------------------------- */
+/* --------- TICKETS PAGE ----------------------------------- */ 
+
+/* header */
 .tickets_page_header * {
   text-transform: uppercase !important;
   font-weight:900;
@@ -24,6 +27,7 @@
   text-align: center;
 }
 
+/* calendar box */
 .calendar-box {
   background: #233658;
   max-width: 900px;
@@ -60,11 +64,7 @@ h3.subheader {
   font-weight: 600;
 }
 
-/* Where To Buy boxes */
-
-/* ============================================================
-   WTB BOX: ways to buy
-   ============================================================ */
+/******** WTB BOX: ways to buy ********/
 
 .wtb-box {
     --wtb-card-bg: #2a3553;
@@ -78,13 +78,13 @@ h3.subheader {
     column-gap: 30px;
     row-gap: 0;
     max-width: 1350px;
-    margin: 0 auto;
+    margin: 0 auto 30px 0;
     color: var(--wtb-text);
     text-align: center;
     text-transform: uppercase;
 }
 
-/* ---------- Cards ---------- */
+/* Cards */
 
 .wtb-box__card {
     display: flex;
@@ -108,8 +108,6 @@ h3.subheader {
     padding: 28px 0 24px;
 }
 
-/* ---------- Headings ---------- */
-
 .wtb-box__heading {
     margin: 0 0 24px;
     padding-bottom: 18px;
@@ -122,7 +120,7 @@ h3.subheader {
     text-transform: uppercase;
 }
 
-/* ---------- Body text ---------- */
+/* Card body text */
 
 .wtb-box__text {
     margin: 0 0 18px;
@@ -164,7 +162,7 @@ h3.subheader {
     color: var(--wtb-accent);
 }
 
-/* ---------- Mobile: one column ---------- */
+/* Mobile: one column */
 
 @media (max-width: 900px) {
     .wtb-box {
