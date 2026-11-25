@@ -1,0 +1,182 @@
+/* ==========================================================
+   TDR — HEADER BAR
+   The markup is built by js/navbar.js. The slide-out menu and
+   hamburger button are styled in tdr-menu.css.
+   ========================================================== */
+
+:root {
+    --tdr-header-h: 84px;
+    --tdr-header-bg: #21304d;
+    --tdr-header-fg: #fff;
+}
+
+
+/* ----------------------------------------------------------
+   SQUARESPACE'S OWN HEADER (7.1)
+   Hidden unconditionally (not only once navbar.js runs) so there is no
+   flash of the built-in header before the deferred script executes.
+   If the header ever reappears after a template change, check the selector
+   in the browser inspector.
+   ---------------------------------------------------------- */
+
+#header {
+    display: none !important;
+}
+
+
+/* ----------------------------------------------------------
+   RESERVED SPACE
+   Push the page down by the header's height, and paint the bar's
+   color in that space right away so nothing jumps when the
+   script inserts the real header on top of it.
+   ---------------------------------------------------------- */
+
+body {
+    padding-top: var(--tdr-header-h);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 8000;
+    height: var(--tdr-header-h);
+    background: var(--tdr-header-bg);
+}
+
+
+/* ----------------------------------------------------------
+   BAR
+   Three columns so the center text is truly centered
+   regardless of the widths of the hamburger and ticket button.
+   z-index is below the menu panel (9999) and overlay (9998).
+   ---------------------------------------------------------- */
+
+.tdr-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9000;
+
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 20px;
+
+    height: var(--tdr-header-h);
+    padding: 0 30px;
+
+    background: var(--tdr-header-bg);
+    color: var(--tdr-header-fg);
+}
+
+.tdr-header,
+.tdr-header * {
+    font-family: 'avenir next', sans-serif !important;
+}
+
+.tdr-header .tdr-menu-toggle {
+    justify-self: start;
+}
+
+.tdr-header-title {
+    justify-self: center;
+    margin: 0;
+    padding: 0;
+    color: var(--tdr-header-fg);
+    font-size: clamp(16px, 1.7vw, 26px);
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.tdr-header-line {
+    display: block;
+}
+
+.tdr-header-link {
+    justify-self: end;
+}
+
+.tdr-header-link a {
+    display: inline-block;
+    padding: 9px 20px;
+    border: 1px solid var(--tdr-header-fg);
+    background: transparent;
+    color: var(--tdr-header-fg) !important;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.tdr-header-link a:hover,
+.tdr-header-link a:focus-visible {
+    background: var(--tdr-header-fg);
+    color: var(--tdr-header-bg) !important;
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   Below 900px the text column takes the remaining space
+   (centered between the hamburger and the button) so it can
+   wrap instead of overflowing.
+   ---------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .tdr-header {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        column-gap: 12px;
+        padding: 0 15px;
+    }
+
+    .tdr-header-title {
+        font-size: clamp(13px, 2.4vw, 18px);
+    }
+
+    .tdr-header-link a {
+        padding: 7px 14px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 680px) {
+
+    :root {
+        --tdr-header-h: 64px;
+    }
+
+    .tdr-header {
+        column-gap: 8px;
+        padding: 0 10px;
+    }
+
+    .tdr-header-title {
+        font-size: clamp(11px, 3.2vw, 15px);
+    }
+
+    .tdr-header-link a {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .tdr-header-link a {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+}

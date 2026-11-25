@@ -40,7 +40,7 @@ the updated `dist/` files along with your source changes.
 |---|---|---|---|
 | Quotes slider | `tdr-quotes.js` | `#quotes-slider` | `Quotes` (A:B) |
 | Calendar | `tdr-calendar.js/.css` | `#tdr-calendar` | `Calendar` (A:G) |
-| Slide-out menu | `tdr-menu.js/.css` | `#tdr-menu`, `.tdr-menu-toggle`, `.tdr-menu-overlay` | none |
+| Header bar & slide-out menu | `navbar.js`, `tdr-header.css`, `tdr-menu.js/.css` | built by `navbar.js` (none needed on the page) | none (see *Navbar config*) |
 | FAQs | `tdr-faqs.js/.css` | `#tdr-faq` | `FAQs` (A:B) |
 | Cast | `tdr-cast-creative.js/.css` | `#tdr-cast` (modal: `#tdr-cast-modal`) | `Cast` (A:J) |
 | Creative team | `tdr-creative.js/.css` | `#tdr-creative` (modal: `#tdr-creative-modal`) | `Creative` (A:J) |
@@ -65,6 +65,32 @@ the ticketing site. Each date in the run is one sheet row:
 
 `tdr-calendar.js` also defines the small shared helper object (`window.TDR`) that
 it needs. No other module uses it.
+
+### Navbar config
+
+`navbar.js` builds the fixed header and the slide-out menu on every page, so no
+header or code block is needed on the pages. Squarespace's own header is hidden
+in `tdr-header.css`. `tdr-menu.js` then adds the open/close behavior, so it
+must stay after `navbar.js` in `build.js`.
+
+The editable content lives in the Squarespace site-wide code injection (below
+the tdr.css / tdr.js includes), so changing it doesn't need a commit:
+
+```html
+<script>
+window.TDR_NAV = {
+    lines: ['The Pulitzer Prize Finalist On', 'Broadway for 16 Weeks Only'], // 1 or 2 lines
+    ticketsUrl: 'https://example.com/tickets',   // '' = no button
+    ticketsLabel: 'Get Tickets',                 // optional
+    links: [
+        { label: 'Home',    href: '/' },
+        { label: 'Tickets', href: '/tickets' }
+    ]
+};
+</script>
+```
+
+The header color and height are CSS variables at the top of `tdr-header.css`.
 
 ## Deploying to Squarespace
 

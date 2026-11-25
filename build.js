@@ -18,7 +18,8 @@ const CSS = [
   'css/tdr-calendar.css',
   'css/tdr-faqs.css',
 //   'css/tdr-quotes.css',
-//   'css/tdr-menu.css',
+   'css/tdr-header.css',
+   'css/tdr-menu.css',
 //   'css/tdr-cast.css',
 //   'css/tdr-creative.css',
    'css/tdr-misc.css',
@@ -28,7 +29,8 @@ const JS = [
   'js/tdr-calendar.js',
   'js/tdr-faqs.js',
 //   'js/tdr-quotes.js',
-//   'js/tdr-menu.js',
+   'js/navbar.js',      // must come before tdr-menu.js (builds the markup it wires up)
+   'js/tdr-menu.js',
 //   'js/tdr-cast.js',
 //   'js/tdr-creative.js'
 ];
